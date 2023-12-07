@@ -27,7 +27,7 @@ class QuizController extends Controller
         if (request()->get('questionsCount')) {
             $quizzes = $quizzes->where('questionsCount', request()->get('questionsCount'));
         }
-        $quizzes = $quizzes->paginate(5);
+        $quizzes = $quizzes->paginate(20);
         return view('admin.quiz.list', compact('quizzes'));
     }
 

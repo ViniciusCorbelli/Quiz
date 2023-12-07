@@ -44,7 +44,7 @@
                         <span @if ($quiz->finished_at) title="($quiz->finished_at)" @endif
                             class="badge bg-danger rounded-pill">
                             @if ($quiz->finished_at)
-                                {{ \Carbon\Carbon::parse($quiz->finished_at)->diffForHumans(now()) . ' está acabando' }}
+                                {{ \Carbon\Carbon::parse($quiz->finished_at)->diffForHumans() }}
                             @else
                             Sem informações de data
                             @endif

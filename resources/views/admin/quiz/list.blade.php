@@ -85,29 +85,31 @@
                                     @endif
                                 </td>
                                 <td class="">
-                                    <a class=" m-2 float-center btn-sm btn btn-outline-warning"
+                                    <a class="m-2 float-center btn-sm btn btn-outline-warning"
                                         href="{{ route('questions.index', $quiz->id) }}"><i class="fa m-1  fa-question"
                                             aria-hidden="true"></i></a>
-                                    <a class=" m-2  float-center btn-sm btn btn-outline-primary"
+                                    <a class="m-2 float-center btn-sm btn btn-outline-primary"
                                         href="{{ route('quizzes.edit', $quiz->id) }}"><i class="fa fa-pen"
                                             aria-hidden="true"></i></a>
-                                    <form method="post" action="{{ route('quizzes.destroy', $quiz->id) }}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" title="Excluir"
-                                            class="float-center btn btn-sm btn-outline-danger">
-                                            <i class="fa fa-trash" aria-hidden="true"></i></button>
-                                    </form>
                                     <a class=" float-center m-2 btn-sm btn btn-outline-secondary"
                                         href="{{ route('quizzes.show', $quiz->id) }}"><i class="fa m-1 fa-info"
                                             aria-hidden="true"></i></a>
+                                    <form class="m-2 float-center btn-sm btn btn-outline-danger" method="post" action="{{ route('quizzes.destroy', $quiz->id) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" title="Excluir">
+                                            <i class="fa fa-trash" aria-hidden="true"></i></button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
-                <div class="shadow-lg p-3 mt-5 mb-5 bg-body rounded"> <b>
-                        {{ $quizzes->withQueryString()->links() }}</b></div>
+
+                @if($quizzes->hasPages())
+                    <div class="shadow-lg p-3 mt-5 mb-5 bg-body rounded"> <b>
+                            {{ $quizzes->withQueryString()->links() }}</b></div>
+                @endif
             </div>
         </div>
     </div>

@@ -52,7 +52,7 @@
 
                     <div class="mb-3 form-group">
 
-                        <label for="finished_at" class="form-label">Data final</label>
+                        <label for="finished_at" class="form-label">Resposta correta</label>
                         <select name="correct_answer" class="form-control" id="">
                             <option @if(old("correct_answer")=="answer1") selected @endif  value="answer1">1. Opção</option>
                             <option @if(old("correct_answer")=="answer2") selected @endif value="answer2">2. Opção</option>

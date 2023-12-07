@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        Titulo
+        TRIVIA
     </x-slot>
     <div class="row">
         <div class="col-md-8">
@@ -13,7 +13,7 @@
                             <h5 class="mb-1 display-6">{{ $quiz->title }}</h5>
                             @if ($quiz->finished_at)
                                 <small
-                                    class="text-dark">{{ \Carbon\Carbon::parse($quiz->finished_at)->diffForHumans() . ' bitiyor' }}</small>
+                                    class="text-dark">{{ \Carbon\Carbon::parse($quiz->finished_at)->diffForHumans()}}</small>
                             @else
                                 <small class="text-dark">Não especificado</small>
                             @endif
@@ -22,8 +22,11 @@
                         <small class="text-muted ">Total {{ $quiz->questions_count }} Pergunta</small>
                     </a>
                 @endforeach
-                <div class="shadow-lg p-3 mt-5 mb-5 bg-body rounded"> <b>
-                        {{ $quizzes->links() }}</b></div>
+
+                @if($quizzes->hasPages())
+                    <div class="shadow-lg p-3 mt-5 mb-5 bg-body rounded"> <b>
+                            {{ $quizzes->links() }}</b></div>
+                @endif
             </div>
         </div>
     </div>
